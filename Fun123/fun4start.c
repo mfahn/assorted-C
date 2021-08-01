@@ -1,0 +1,239 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+// repeat the symbol the specified number of times						rept
+void rept( int many, char sym )
+{
+	int x, k;
+	for(x=0; x<many; x++)
+	{
+		printf("%c", sym);
+	}
+	printf("\n");
+}
+// check if c is a digit; 1 for yes, 0 for no						checkDigit
+int checkDigit( char c )
+{
+	int len, k;
+	if(c >= '0' && c <= '9')
+		return 1;
+	return 0;
+}
+// check if c is a vowel; 1 for yes, 0 for no							checkVowel
+int checkVowel( char c )
+{
+	if(c == 'a' | c =='e' | c =='i' | c =='o' | c =='u' | c == 'A' | c =='E' | c =='I' | c =='O' | c =='U')
+		return 1;
+	return 0;
+}
+// assign letter grades based on scores, N students  					assignGrades
+void assignGrades( int scores[], char grades[], int N )
+{
+	int x;
+	for(x=0; x<N; x++)
+	{
+		if(scores[x]<=100)
+			grades[x]='A';
+		if(scores[x]<90)
+			grades[x]='B';
+		if(scores[x]<80)
+			grades[x]='C';
+		if(scores[x]<70)
+			grades[x]='D';
+		if(scores[x]<60 && scores[x]>=0)
+			grades[x]='F';
+		if(scores[x]<0 || scores[x]>100)
+			grades[x]='?';
+	}
+}
+// how many vowels in s													vowels
+int vowels( char s[] )
+{
+	int x, v, len;
+	v=0;
+	len=strlen(s);
+	for(x=0; x<len; x++)
+	{
+		if(s[x]== 'a' | s[x]=='e' | s[x]=='i' | s[x]=='o' | s[x]=='u')
+			v++;
+		if(s[x]=='A' | s[x]=='E' | s[x]=='I' | s[x]=='O' |s[x]=='U')
+			v++;
+	}
+	return v;
+}
+// 																		hideDigs
+void hideDigs( char s[] )
+{
+	int len, k;
+	len=strlen(s);
+	for(k=0; k<len; k++)
+	{
+		if(checkDigit(s[k])==1)
+		{
+			s[k]='#';
+		}
+	}
+}
+// make a copy of the original string									makeUpper
+// but all charactes should be uppercase
+void makeUpper( char orig[], char result[] )
+{
+	int x, len;
+	len=strlen(orig);
+	for(x=0; x<len; x++)
+	{
+		if(orig[x]>='a' && orig[x]<='z')
+		{
+			result[x]=orig[x]-32;
+		}
+		else
+		{
+			result[x]=orig[x];
+		}
+	}
+}
+// create a string that consists of only the							onlyLetters
+// letters from the original string
+// letters are all packed together too, may repeat
+int onlyLetters( char orig[], char letters[] )
+{
+	int x, len;
+	int let=0;
+	len=strlen(orig);
+	for(x=0; x<len; x++)
+	{
+		if(orig[x]>='a' && orig[x]<='z' || orig[x]>='A' && orig[x]<='Z')
+		{
+			letters[let]=orig[x];
+			let++;
+		}
+		letters[let]='\0';
+	}
+	return let;
+}
+// how many odd values in the array - named A with N items				countOdd
+int countOdd( int A[], int N )
+{
+	int x, k;
+	k=0;
+	for(x=0; x<N; x++)
+	{
+		if(A[x]==1 | A[x]==3 | A[x]==5 | A[x]==7 | A[x]==9 | A[x]==11)
+		{
+			k++;
+		}
+	}
+	return k;
+}
+// create a duplicate of the original list								copyNumList
+ void copyNumList( int orig[], int N, int result[] )
+{
+	int x;
+	for(x=0; x<N; x++)
+	{
+		result[x]=orig[x];
+	}
+}
+// populate list A with N items, random in range L to H					fillNumList
+void fillNumList( int A[], int N, int L, int H )
+{
+	int x;
+	for(x=0; x<N; x++)
+    {
+		A[x]=rand() % (H-L) + L ;
+	}
+}
+// print the list, ( for full points 10 items per line )				printList
+void printList( int A[], int N )
+{
+	int x, k;
+	for(x=0; x<N; x++)
+	{
+		if(A[x]>=10 && A[x]<12)
+			printf(" %d ", A[x]);
+		else
+			printf("  %d ", A[x]);
+		if(9== x % 10)
+			printf("\n");
+	}
+	printf("\n");
+}//																	main
+int main()
+{
+	char inp[50], s[50], t[50];
+	int ans, x, l, length;
+	int pts[10]={93, 55, 987, 76, 88, 88};
+	char gds[10];
+
+/*	//hideDigs
+	scanf("%s", inp);
+	hideDigs(inp);
+	printf("%s\n", inp);
+*/
+	//Assign Grades
+	assignGrades( pts, gds, 6 );
+	for ( x = 0; x < 6; x++ )
+		printf("%c: %d\n", gds[x], pts[x] );
+
+	// In the final version comment out these 4 lines
+	/*printf("String: In 1881, Dakota State...Ab3dEiIl1");
+	fgets( inp, 50, stdin );
+	l = strlen( inp );
+	inp[l-1] = '\0';
+	printf("\n");
+	*/
+	//In the final version put this code in
+	strcpy(inp, "In 1881, Dakota State...Ab3dEiIl1");
+	strcpy(s, inp);
+	strcpy(t, inp);
+
+	hideDigs( s );
+	printf("No digs: %s\n", s);
+	ans = vowels( t );
+	printf("%d vowels\n", ans);
+
+	char line[100], other[100];
+	int k, len;
+
+	printf("Phrase: ");
+	fgets( line, 100, stdin );
+	len=strlen(line);
+	line[len-1]= '\0';
+
+	rept(10,'-');
+	printf("Orig:  %s\n", line);
+
+	rept(10,'-');
+	makeUpper( line, other );
+	printf("Uppercase: %s\n", other);
+
+	rept(10,'-');
+	len = onlyLetters( line, other );
+	printf("Only letters: %s\n", other );
+	printf("New length %d\n", len);
+
+	int nums[30], vals[30];
+	int many = 19;
+	rept(15, '-');
+	fillNumList( nums, many, 3, 11 );
+	printList( nums, many );
+
+	rept(15, '-');
+	x=countOdd( nums, many );
+	printf("%d odd values\n", x);
+
+	rept(15, '-');
+	copyNumList( nums, many, vals );
+	printf("Copy\n");
+	printList( vals, many );
+
+	rept(15, '-');
+	printf("Orig\n");
+	printList( nums, many );
+	rept(15, '-');
+	return 0;
+}
+
+
