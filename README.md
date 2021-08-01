@@ -22,4 +22,9 @@ If using Header files, compile them before the C file containing the main functi
 Example: gcc header.h header2.h main.c
 
 ### Execution
+
+#### Linux
 ```./a.out```
+
+#### Windows 
+```a```

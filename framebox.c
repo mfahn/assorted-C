@@ -4,9 +4,7 @@
 #include <string.h>
 
 int main()
-
 {
-
 	int x, len, input;
 	char a[60];
 

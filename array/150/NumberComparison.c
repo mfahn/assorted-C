@@ -9,10 +9,11 @@ int main()
 	srand(time(NULL));
 	x=rand() % 100+1;
 	y=rand() % 100+1;
+	printf("Number 1 is %d and Number 2 is %d\n", x, y);
 
 	if(x>y)
-		printf("X is %d\n", x);
+		printf("Number 1 is greater than number 1\n");
 	else
-		printf("Y is %d\n", y);
-return 0;
+		printf("Number 2 is greater than number 1\n");
+	return 0;
 }

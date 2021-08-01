@@ -1,9 +1,3 @@
-/*
-Excel & C  : leet
-Develop a spreadsheet to convert text from
-   normal spelling to leet
-*/
-
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -21,17 +15,6 @@ void replace( char s[], char in, char out )
 			s[x] = out;
 	}
 }
-
-void upperGen(char u[], int num)
-{
-	int x;
-	for(x=1; x<=num; x++)
-	{
-		u[x]=rand() % 'Z' + 'A';
-	}
-	u[num]='\0';
-}
-
 
 int main()
 {
@@ -52,9 +35,6 @@ int main()
 	replace(change, 'e', '3');
 	replace(change, 'l', '1');
 	printf("%s\n", change);
-	printf("How many uppercase characters do you want: \n");
-	scanf("%d", &num);
-	printf("%s\n", u);
 
 	return 0;
 }

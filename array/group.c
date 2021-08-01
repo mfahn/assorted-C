@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 int main()
 {
 	char str1[50], str2[50],str3[50];
@@ -60,7 +59,6 @@ int main()
 
     }
     printf("%s\n",str3);
-
 
 //Part 5
 	printf("Yiggity yo, what's your guess for this BOMB SWOOGITY puzzle?    ");
