@@ -19,6 +19,7 @@ http://mingw-w64.org/doku.php/download
 ```gcc filename.cpp```
 
 If using Header files, compile them before the C file containing the main function
+
 Example: gcc header.h header2.h main.c
 
 ### Execution
